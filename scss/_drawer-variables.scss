@@ -1,0 +1,16 @@
+@import "../../colors/scss/colors-variables";
+
+// Component Variables
+$component-light-color:           theme-color("primary") !default;
+$component-light-hover-color:     darken($component-light-color, 15%) !default;
+$component-light-active-color:    darken($component-light-color, 10%) !default;
+$component-light-disabled-color:  rgba(gray("200"), .8) !default;
+$component-light-bg:              color("white");
+
+// Drawer Variables
+$drawer-color:              gray("900") !default;
+$drawer-hover-color:        color("black") !default;
+$drawer-active-color:       $component-light-active-color !default;
+$drawer-disabled-color:     $component-light-disabled-color !default;
+$drawer-icon-color:         rgba(gray("700"), .90) !default;
+$drawer-width:              230px !default;

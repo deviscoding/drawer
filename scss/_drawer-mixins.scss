@@ -1,0 +1,31 @@
+@import "../../base/scss/base";
+@import "drawer-variables";
+
+@mixin persistent() {
+  .persistent {
+    &:not(.on) {
+
+    }
+  }
+}
+
+@mixin temporary() {
+  .temporary {
+    nav.drawer {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: $drawer-width;
+      z-index: const(ZINDEX_MODAL);
+      .drawer-footer, .drawer-header {
+        display: block;
+      }
+    }
+    &:not(.on) {
+      nav.drawer {
+        transform: translateX(-100%);
+      }
+    }
+  }
+}
