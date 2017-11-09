@@ -1,12 +1,10 @@
-@import "../../base/scss/base";
 @import "drawer-variables";
-@import "drawer-mixins";
 
 @if $enable-framework == false {
-/*!
- * StrapLess v1.6.1 Drawer (http://github.com/strapless/strapless)
- * Licensed under MIT (https://github.com/strapless/strapless/blob/master/LICENSE)
- */
+  /*!
+   * StrapLess v1.6.1 Drawer (http://github.com/strapless/strapless)
+   * Licensed under MIT (https://github.com/strapless/strapless/blob/master/LICENSE)
+   */
 }
 
 main {
@@ -28,7 +26,7 @@ nav.drawer {
   margin-top: -1.1rem;
   margin-bottom: -1.1rem;
   margin-right: .5rem;
-  @include elevation(1);
+  @include elevation(2);
   flex-direction: column;
   flex: 0 0 auto;
   a.list-group-item, a.account {
@@ -67,7 +65,7 @@ nav.drawer {
       min-height: 1rem;
       border-radius: 0;
       display: flex;
-      flex: 1 0 auto;
+      flex: 1 0 auto;;
       align-items: center;
     }
     .list-group-item-heading {
@@ -101,30 +99,29 @@ nav.drawer {
   }
 }
 
-@include media('<md') {
-  .account {
-    display: none;
-  }
-  .account + .divider {
-    display: none;
-  }
-}
+//@include media('<md') {
+//  .account {
+//    display: none;
+//  }
+//  .account + .divider {
+//    display: none;
+//  }
+//}
 
-.drawer-header {
-  > .list-group:last-child {
-    margin-top: auto;
-  }
-  a.account {
-    display: flex;
-    align-items: center;
-    > .list-unstyled {
-      margin-bottom: 0;
-    }
-    > .#{$icon-css-prefix} {
-      margin-left: auto;
-      margin-right: -1.25rem;
-      opacity: .2;
-      flex: 0 1 auto;
+nav.drawer {
+  .drawer-header {
+    a.account {
+      display: flex;
+      align-items: center;
+      > .list-unstyled {
+        margin-bottom: 0;
+      }
+      > .#{$icon-css-prefix} {
+        margin-left: auto;
+        margin-right: -1.25rem;
+        opacity: .2;
+        flex: 0 1 auto;
+      }
     }
   }
 }
@@ -155,9 +152,24 @@ header .nav.nav-tabs  {
       top: 0;
       bottom: 0;
       left: 0;
-      z-index: const(ZINDEX_MODAL);
+      z-index: $zindex-modal;
+      margin-top: 0;
       .drawer-header, .drawer-footer {
-        display: block;
+        display: flex;
+        flex-direction: column;
+      }
+      .drawer-header {
+        flex: 0 0 auto;
+        [data-toggle] {
+          flex: 1 0 auto;
+        }
+        .account-item {
+          flex: 0 1 auto;
+        }
+      }
+      .drawer-body {
+        overflow-y: scroll;
+        overflow-x: hidden;
       }
       .drawer-footer {
         margin-top: auto;
@@ -174,7 +186,7 @@ header .nav.nav-tabs  {
 
 @include media('>sm') {
   html:not(.persistent) {
-    .navbar-toggle {
+    .navbar-toggler {
       display: none;
     }
   }
