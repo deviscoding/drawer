@@ -1,4 +1,5 @@
-@import "../../colors/scss/colors-variables";
+@import "strapless/colors/scss/colors";
+@import "strapless/base/scss/base";
 
 // Component Variables
 $component-light-color:           theme-color("primary") !default;

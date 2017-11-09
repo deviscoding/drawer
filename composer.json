@@ -1,0 +1,26 @@
+{
+    "name": "strapless/drawer",
+    "keywords": [
+        "responsive",
+        "drawer",
+        "material",
+        "sass",
+        "scss",
+        "strapless",
+        "css"
+    ],
+    "homepage": "https://www.github.com/strapless/drawer",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Aaron M Jones",
+            "homepage": "http://www.jonesiscoding.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "strapless/colors": "^1.0.4",
+        "strapless/base": "^1.1.1",
+        "strapless/display": "^1.0"
+    }
+}
