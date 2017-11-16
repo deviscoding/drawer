@@ -1,6 +1,8 @@
 @import "strapless/colors/scss/colors";
 @import "strapless/base/scss/base";
 
+$enable-framework: false !default;
+
 // Component Variables
 $component-light-color:           theme-color("primary") !default;
 $component-light-hover-color:     darken($component-light-color, 15%) !default;

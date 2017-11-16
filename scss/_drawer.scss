@@ -2,7 +2,7 @@
 
 @if $enable-framework == false {
   /*!
-   * StrapLess Drawer v1.0 (http://github.com/strapless/drawer)
+   * StrapLess Drawer v1.0.1 (http://github.com/strapless/drawer)
    * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
    */
 }
@@ -17,11 +17,12 @@ nav.drawer {
   // Normally, Show Drawer on Screen
   display: flex;
   transform: translateX(0);
+  z-index: 1;
   // Footer & Header only show on Temporary
   .drawer-footer, .drawer-header { display: none; }
   // Unified Styles
   min-width:        $drawer-width;
-  background-color: $white;
+  background-color: color("white");
   position:         relative;
   margin-top: -1.1rem;
   margin-bottom: -1.1rem;
@@ -33,7 +34,7 @@ nav.drawer {
     color: $drawer-color;
     text-decoration: none;
     &:hover, &:focus {
-      background-color: $gray-200;
+      background-color: gray(200);
       color: $drawer-hover-color;
     }
     &:active {
@@ -46,7 +47,7 @@ nav.drawer {
   .list-group-item {
     border-radius: 0;
     padding: .75rem 1.5rem;
-    > .#{$icon-css-prefix} {
+    > i.#{$icon-css-prefix} {
       width: (18em / 14);
       font-size: (4em / 3);
       line-height: (3em / 4);
@@ -55,10 +56,16 @@ nav.drawer {
       color: $drawer-icon-color;
       margin-right: 1rem;
     }
+    svg.#{$icon-css-prefix} {
+      fill: $drawer-icon-color;
+      margin-right: 1rem;
+    }
   }
   .drawer-hide { display: none; }
   .drawer-body {
     padding: .5rem 0;
+    display: flex;
+    flex-direction: column;
     .list-group-item {
       border: none;
       background-color: transparent;
@@ -79,7 +86,7 @@ nav.drawer {
       // Separator between groups
       margin:              .25rem 0 0 0;
       padding-bottom:      .25rem;
-      border:              0 solid rgba($black, .125);
+      border:              0 solid rgba(color("black"), .125);
       border-top-width: 1px;
       &:first-child {
         border-top-width: 0;
@@ -98,15 +105,6 @@ nav.drawer {
     }
   }
 }
-
-//@include media('<md') {
-//  .account {
-//    display: none;
-//  }
-//  .account + .divider {
-//    display: none;
-//  }
-//}
 
 nav.drawer {
   .drawer-header {
@@ -152,7 +150,7 @@ header .nav.nav-tabs  {
       top: 0;
       bottom: 0;
       left: 0;
-      z-index: $zindex-modal;
+      z-index: const(ZINDEX_MODAL);
       margin-top: 0;
       .drawer-header, .drawer-footer {
         display: flex;
