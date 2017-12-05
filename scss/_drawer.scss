@@ -130,12 +130,15 @@ nav.drawer {
 
 
 // Adjusts tabs with drawer
-header .nav.nav-tabs {
-  padding-left: $drawer-width + space-x(md, unit($drawer-width));
+html:not(.temporary) {
+  header .nav.nav-tabs {
+    padding-left: $drawer-width + space-x(md, unit($drawer-width));
+  }
 }
 
+
 // Hides Drawer, Adjusts Tabs
-@include media('<lg') {
+@include media('<xl') {
   html:not(.on):not(.permanent) {
     nav.drawer {
       transform: translateX(-100%);
@@ -147,7 +150,7 @@ header .nav.nav-tabs {
   }
 }
 
-@include media('<md') {
+@include media('<lg') {
   html:not(.permanent):not(.persistent) {
     nav.drawer {
       position: fixed;
@@ -186,7 +189,7 @@ header .nav.nav-tabs {
   }
 }
 
-@include media('>sm') {
+@include media('>lg') {
   html:not(.persistent) {
     .navbar-toggler {
       display: none;

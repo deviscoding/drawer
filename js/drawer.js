@@ -1,7 +1,7 @@
 /**
  * jQuery Plugin for managing a navigation drawer.
  *
- * @version v1.2.0
+ * @version v1.0.2
  * @license https://github.com/strapless/strapless/LICENSE
  * @author  Aaron M Jones <am@jonesiscoding.com>
  */
@@ -17,11 +17,11 @@
       var $html    = $('html');
 
       drawer.isTemporary = function() {
-        return $.fn.isBreakpoint( [ 'xs', 'sm' ] ) || ($.fn.isBreakpoint(['md']) && $('html').hasClass('touch'));
+        return $.fn.isBreakpoint( [ 'xs', 'sm', 'md' ] ) || ($.fn.isBreakpoint(['md']) && $('html').hasClass('touch'));
       };
 
       drawer.isPersistent = function() {
-        return $.fn.isBreakpoint(['md']) && !drawer.isTemporary();
+        return $.fn.isBreakpoint(['lg']) && !drawer.isTemporary();
       };
 
       drawer.init = function() {
