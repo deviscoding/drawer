@@ -130,8 +130,8 @@ nav.drawer {
 
 
 // Adjusts tabs with drawer
-header .nav.nav-tabs  {
-  padding-left: $drawer-width + computed($half-gutter-width);
+header .nav.nav-tabs {
+  padding-left: $drawer-width + space-x(md, unit($drawer-width));
 }
 
 // Hides Drawer, Adjusts Tabs
