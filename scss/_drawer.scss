@@ -1,10 +1,7 @@
 @import "drawer-variables";
 
-@if $enable-framework == false {
-  /*!
-   * StrapLess Drawer v1.0.1 (http://github.com/strapless/drawer)
-   * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
-   */
+@if not($enable-framework) {
+  @import "license";
 }
 
 main {
