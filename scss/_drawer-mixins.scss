@@ -1,0 +1,28 @@
+@import "drawer-variables";
+
+@mixin drawer-icons {
+  @if component("icons") {
+    //noinspection SassScssUnresolvedVariable
+    > .#{$icon-css-prefix} {
+      width: $drawer-icon-width;
+      color: $drawer-icon-color;
+      margin-right: 1rem;
+    }
+    @if component-feature("icons","font") {
+      //noinspection SassScssUnresolvedVariable
+      > i.#{$icon-css-prefix} {
+        font-size: $drawer-icon-font-size;
+        line-height: $drawer-icon-height;
+        vertical-align: -15%;
+        text-align: left;
+      }
+    }
+    @if component-feature("icons","svg") {
+      //noinspection SassScssUnresolvedVariable
+      > svg.#{$icon-css-prefix} {
+        height: $drawer-icon-height;
+        fill: $drawer-icon-color;
+      }
+    }
+  }
+}

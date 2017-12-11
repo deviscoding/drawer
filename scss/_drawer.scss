@@ -1,4 +1,5 @@
 @import "drawer-variables";
+@import "drawer-mixins";
 
 @if not($enable-framework) {
 /*!
@@ -12,106 +13,61 @@ main {
   padding-bottom: 1rem;
 }
 
-// Base Drawer Style
-nav.drawer {
-  // Normally, Show Drawer on Screen
+.navbar-toggler {
   display: flex;
-  transform: translateX(0);
-  z-index: 1;
-  // Footer & Header only show on Temporary
-  .drawer-footer, .drawer-header { display: none; }
-  // Unified Styles
-  min-width:        $drawer-width;
-  background-color: color("white");
-  position:         relative;
-  margin-top: -1.1rem;
-  margin-bottom: -1.1rem;
-  margin-right: .5rem;
-  @include elevation(2);
+  z-index: 5;
+  transition: 1s ease-in-out;
+}
+
+nav.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: $drawer-width;
+  max-height: 100vh;
   flex-direction: column;
   flex: 0 0 auto;
-  a.list-group-item, a.account {
-    color: $drawer-color;
-    text-decoration: none;
-    &:hover, &:focus {
-      background-color: gray(200);
-      color: $drawer-hover-color;
-    }
-    &:active {
-      color: $drawer-active-color;
-    }
-    &:disabled {
-      color: $drawer-disabled-color;
-    }
-  }
-  .list-group-item {
-    border-radius: 0;
-    padding: .75rem 1.5rem;
-    @if component("icons") {
-      //noinspection SassScssUnresolvedVariable
-      > i.#{$icon-css-prefix} {
-        width: (18em / 14);
-        font-size: (4em / 3);
-        line-height: (3em / 4);
-        vertical-align: -15%;
-        text-align: left;
-        color: $drawer-icon-color;
-        margin-right: 1rem;
-      }
-      //noinspection SassScssUnresolvedVariable
-      svg.#{$icon-css-prefix} {
-        fill: $drawer-icon-color;
-        margin-right: 1rem;
-      }
-    }
-  }
-  .drawer-hide { display: none; }
-  .drawer-body {
-    padding: .5rem 0;
-    display: flex;
-    flex-direction: column;
-    .list-group-item {
-      border: none;
-      background-color: transparent;
-      min-height: 1rem;
-      border-radius: 0;
+  // Colors
+  background-color: $drawer-bg-color;
+  color: $drawer-color;
+  @include elevation(2);
+  // Hidden by moving off screen
+  z-index: const(ZINDEX_MODAL);
+  transition: .5s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.temporary, .persistent {
+  &.on {
+    nav.drawer {
+      transform: translateX(0);
       display: flex;
-      flex: 1 0 auto;;
-      align-items: center;
-    }
-    .list-group-item-heading {
-      color: lighten($drawer-color, 50%);
-      margin-bottom: 0;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: .9rem;
-    }
-    .list-group {
-      // Separator between groups
-      margin:              .25rem 0 0 0;
-      padding-bottom:      .25rem;
-      border:              0 solid rgba(color("black"), .125);
-      border-top-width: 1px;
-      &:first-child {
-        border-top-width: 0;
-      }
-      > li {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        &.active > a.list-group-item {
-          color: $drawer-active-color;
-          &:hover, &:focus {
-            color: $drawer-hover-color;
-          }
-        }
-      }
     }
   }
 }
 
+// Styles for Header/Body/Footer
 nav.drawer {
   .drawer-header {
+    flex: 0 0 auto;
+    background-color: $drawer-header-bg-color;
+    [data-toggle] {
+      flex: 1 0 auto;
+    }
+    .account-item {
+      flex: 0 1 auto;
+      border-bottom: 1px solid rgba(color("black"), .125);
+      > a:hover, > a:focus {
+        background-color: transparent;
+      }
+    }
+    > a, .account-item > a {
+      &:hover, &:focus {
+        outline: 0;
+        background-color: transparent;
+      }
+    }
     a.account {
       display: flex;
       align-items: center;
@@ -129,73 +85,139 @@ nav.drawer {
       }
     }
   }
-}
-
-
-// Adjusts tabs with drawer
-html:not(.temporary) {
-  header .nav.nav-tabs {
-    padding-left: $drawer-width + space-x(md, unit($drawer-width));
+  .drawer-body {
+    // Make sure we scroll properly
+    overflow-y: scroll;
+    overflow-x: hidden;
+    // Use flex columns for stacking
+    display: flex;
+    flex-direction: column;
+    // Padding only to top and bottom
+    padding: $drawer-spacer-y 0;
+  }
+  .drawer-footer {
+    // Push footer to bottom
+    margin-top: auto;
+  }
+  .drawer-hide {
+    display: none !important;
   }
 }
 
 
-// Hides Drawer, Adjusts Tabs
-@include media('<xl') {
-  html:not(.on):not(.permanent) {
-    nav.drawer {
-      transform: translateX(-100%);
-      display: none;
+// Styles for List Groups
+nav.drawer {
+  a.list-group-item, a.account {
+    color: $drawer-color;
+    text-decoration: none;
+    &:hover, &:focus {
+      background-color: gray(200);
+      color: $drawer-hover-color;
     }
-    header .nav.nav-tabs {
-      padding-left: 0;
+    &:active {
+      color: $drawer-active-color;
+    }
+    &:disabled {
+      color: $drawer-disabled-color;
     }
   }
-}
-
-@include media('<lg') {
-  html:not(.permanent):not(.persistent) {
-    nav.drawer {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: const(ZINDEX_MODAL);
-      margin-top: 0;
-      .drawer-header, .drawer-footer {
+  .list-group-item {
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    // Use flexbox for centering
+    padding: .75rem 1.5rem;
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    min-height: 1rem;
+    @include drawer-icons;
+  }
+  .drawer-body {
+    .list-group-item-heading {
+      color: lighten($drawer-color, 50%);
+      margin-bottom: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .9rem;
+    }
+    .list-group {
+      // Separator between groups
+      margin:              .25rem 0 0 0;
+      padding-bottom:      .25rem;
+      border: 0 solid rgba(color("black"), .125);
+      border-top-width: 1px;
+      &:first-child {
+        border-top-width: 0;
+      }
+      > li {
         display: flex;
-        flex-direction: column;
-      }
-      .drawer-header {
-        flex: 0 0 auto;
-        [data-toggle] {
-          flex: 1 0 auto;
-        }
-        .account-item {
-          flex: 0 1 auto;
-        }
-      }
-      .drawer-body {
-        overflow-y: scroll;
-        overflow-x: hidden;
-      }
-      .drawer-footer {
-        margin-top: auto;
-        .list-group-item {
-          border-width: 0;
-          &:first-child {
-            border-top-width: 1px;
+        flex-direction: row;
+        align-items: center;
+        &.active > a.list-group-item {
+          color: $drawer-active-color;
+          &:hover, &:focus {
+            color: $drawer-hover-color;
           }
         }
       }
     }
   }
+  .drawer-footer {
+    .list-group-item:first-child {
+      border-top-width: 1px;
+    }
+  }
 }
 
-@include media('>lg') {
-  html:not(.persistent) {
-    .navbar-toggler {
+@include media(">md") {
+  nav.drawer {
+    position: relative;
+    transform: translateX(0);
+    // Layer below page header nad footer.
+    z-index: 0;
+    margin-top: -1.1rem;
+    margin-bottom: -1.1rem;
+    margin-right: $drawer-spacer-x;
+    // Hidden by being invisible so it doesn't take up space now that we're not fixed position
+    display: none;
+    // Don't want header or footer either.
+    .drawer-header, .drawer-footer {
       display: none;
+    }
+  }
+  .navbar-toggler {
+    // Toggle off by default
+    transform: translateX(-100%);
+    display: none;
+  }
+  .persistent {
+    .navbar-toggler {
+      // Unless we're a persistent drawer, which can be turned on and off.
+      transform: translateX(0);
+      display: flex;
+    }
+    &:not(.on) {
+      nav.drawer {
+        // If persistent and NOT on, move it off screen.
+        transform: translateX(-100%);
+      }
+    }
+  }
+  // Automatically adjust other elements
+  .drawer-padding-adjust {
+    padding-left: $drawer-width + space-x(md, unit($drawer-width));
+  }
+  .drawer-margin-adjust {
+    margin-left: $drawer-width + space-x(md, unit($drawer-width));
+  }
+  .persistent:not(.on) {
+    // Unless we're a turned off persistent drawer
+    .drawer-padding-adjust {
+      padding-left: 0;
+    }
+    .drawer-margin-adjust {
+      margin-left: 0;
     }
   }
 }
