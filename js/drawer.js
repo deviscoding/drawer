@@ -1,7 +1,7 @@
 /**
  * jQuery Plugin for managing a navigation drawer.
  *
- * @version v1.0.2
+ * @version v1.1
  * @license https://github.com/strapless/strapless/LICENSE
  * @author  Aaron M Jones <am@jonesiscoding.com>
  */
@@ -27,14 +27,14 @@
       drawer.init = function() {
         if ( typeof $target !== 'undefined' ) {
           if(drawer.isTemporary()) {
-            $html.addClass('temporary').removeClass('on persistent permanent');
+            $html.addClass('animate temporary').removeClass('on persistent permanent');
           } else if(drawer.isPersistent()) {
             if(!$html.hasClass('temporary')) {
               $html.addClass('on');
             }
-            $html.addClass('persistent').removeClass('temporary permanent');
+            $html.addClass('animate persistent').removeClass('temporary permanent');
           } else {
-            $html.addClass('permanent').removeClass('temporary persistent on');
+            $html.addClass('animate permanent').removeClass('temporary persistent on');
           }
         }
       };
@@ -52,6 +52,7 @@
 
       $trigger.on( 'click', function ( e ) {
         if ( $trigger.is( 'a' ) ) { e.preventDefault(); }
+        $html.addClass('animate');
         if ( typeof $target !== 'undefined' ) {
           if ( drawer.isTemporary() ) {
             $html.toggleClass('on');
@@ -60,6 +61,10 @@
           }
         }
       } );
+
+      $target.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+        $html.removeClass('animate')
+      });
 
       $('body').on('click.collapse-group.data-api', '[data-toggle=collapse-group]', function (e) {
         e.preventDefault();

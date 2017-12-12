@@ -21,6 +21,7 @@
     "require": {
         "strapless/colors": "^1.0.4",
         "strapless/base": "^1.1.1",
-        "strapless/display": "^1.0"
+        "strapless/display": "^1.0",
+        "strapless/layout": "^1.0"
     }
 }

@@ -3,20 +3,14 @@
 
 @if not($enable-framework) {
 /*!
- * StrapLess Drawer v1.0.2 (http://github.com/strapless/drawer)
+ * StrapLess Drawer v1.1 (http://github.com/strapless/drawer)
  * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
  */
 }
 
-main {
-  display: flex;
-  padding-bottom: 1rem;
-}
-
-.navbar-toggler {
-  display: flex;
-  z-index: 5;
+header .navbar-toggler {
   transition: 1s ease-in-out;
+  display: flex;
 }
 
 nav.drawer {
@@ -33,16 +27,80 @@ nav.drawer {
   color: $drawer-color;
   @include elevation(2);
   // Hidden by moving off screen
-  z-index: const(ZINDEX_MODAL);
-  transition: .5s ease-in-out;
-  transform: translateX(-100%);
+  z-index: 0;
+  margin-left: -$drawer-width;
+  transition: margin-left 1s ease-in-out;
+  display: flex;
+  .drawer-header, .drawer-footer {
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    display: block;
+  }
 }
 
-.temporary, .persistent {
-  &.on {
-    nav.drawer {
-      transform: translateX(0);
-      display: flex;
+.on {
+  nav.drawer {
+    margin-left: 0;
+  }
+}
+
+.temporary.on, .temporary.expanding, k {
+  nav.drawer {
+    z-index: const(ZINDEX_MODAL);
+  }
+}
+
+// Styles for Drawer Groups
+nav.drawer {
+  .drawer-link {
+    color: $drawer-color;
+    text-decoration: none !important;
+    @include drawer-icons;
+    &:hover, &:focus {
+      background-color: gray(200);
+      color: $drawer-hover-color;
+    }
+  }
+  .active > .drawer-link, .drawer-link:active {
+    color: $drawer-active-color;
+  }
+  .disabled > .drawer-link, .drawer-link.disabled {
+    color: $drawer-disabled-color;
+  }
+  .drawer-group {
+    // Separator between groups
+    margin: .25rem 0 0 0;
+    padding: 0 0 .25rem 0;
+  }
+  .drawer-item {
+    display: block;
+  }
+  .drawer-link, .drawer-item > *:not(.drawer-group) {
+    padding: 0rem 1.5rem;
+    min-height: $drawer-item-height;
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+  }
+  .drawer-item-heading {
+    color: $drawer-item-heading-color;
+    font-size: .9rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .drawer-body {
+    .drawer-group {
+      border: 0 solid rgba(black, .125);
+      border-top-width: 1px;
+      &:first-child {
+        border-top-width: 0;
+      }
+    }
+  }
+  .drawer-footer {
+    .drawer-item:first-child {
+      border-top-width: 1px;
     }
   }
 }
@@ -57,7 +115,7 @@ nav.drawer {
     }
     .account-item {
       flex: 0 1 auto;
-      border-bottom: 1px solid rgba(color("black"), .125);
+      border-bottom: 1px solid rgba(black, .125);
       > a:hover, > a:focus {
         background-color: transparent;
       }
@@ -104,104 +162,38 @@ nav.drawer {
   }
 }
 
-
-// Styles for List Groups
-nav.drawer {
-  a.list-group-item, a.account {
-    color: $drawer-color;
-    text-decoration: none;
-    &:hover, &:focus {
-      background-color: gray(200);
-      color: $drawer-hover-color;
-    }
-    &:active {
-      color: $drawer-active-color;
-    }
-    &:disabled {
-      color: $drawer-disabled-color;
-    }
-  }
-  .list-group-item {
-    border-radius: 0;
-    border: none;
-    background-color: transparent;
-    // Use flexbox for centering
-    padding: .75rem 1.5rem;
-    display: flex;
-    flex: 1 0 auto;
-    align-items: center;
-    min-height: 1rem;
-    @include drawer-icons;
-  }
-  .drawer-body {
-    .list-group-item-heading {
-      color: lighten($drawer-color, 50%);
-      margin-bottom: 0;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: .9rem;
-    }
-    .list-group {
-      // Separator between groups
-      margin:              .25rem 0 0 0;
-      padding-bottom:      .25rem;
-      border: 0 solid rgba(color("black"), .125);
-      border-top-width: 1px;
-      &:first-child {
-        border-top-width: 0;
-      }
-      > li {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        &.active > a.list-group-item {
-          color: $drawer-active-color;
-          &:hover, &:focus {
-            color: $drawer-hover-color;
-          }
-        }
-      }
-    }
-  }
-  .drawer-footer {
-    .list-group-item:first-child {
-      border-top-width: 1px;
-    }
-  }
-}
-
 @include media(">md") {
   nav.drawer {
-    position: relative;
-    transform: translateX(0);
-    // Layer below page header nad footer.
-    z-index: 0;
-    margin-top: -1.1rem;
-    margin-bottom: -1.1rem;
-    margin-right: $drawer-spacer-x;
-    // Hidden by being invisible so it doesn't take up space now that we're not fixed position
-    display: none;
-    // Don't want header or footer either.
     .drawer-header, .drawer-footer {
+      opacity: 0;
       display: none;
     }
+    margin-left: 0;
+    position: relative;
+    // Layer below page header and footer.
+    max-height: none;
+    padding-top: 64px;
+    z-index: 0 !important;
+    margin-right: $drawer-spacer-x;
+    height: 100%;
   }
-  .navbar-toggler {
-    // Toggle off by default
-    transform: translateX(-100%);
-    display: none;
+  html.persistent:not(.on) {
+    nav.drawer {
+      margin-left: -$drawer-width !important;
+    }
+  }
+  html:not(.persistent) {
+    header .navbar-toggler {
+      // Toggle off by default
+      transform: translateX(-100%);
+      display: none !important;
+    }
   }
   .persistent {
-    .navbar-toggler {
+    header .navbar-toggler {
       // Unless we're a persistent drawer, which can be turned on and off.
       transform: translateX(0);
-      display: flex;
-    }
-    &:not(.on) {
-      nav.drawer {
-        // If persistent and NOT on, move it off screen.
-        transform: translateX(-100%);
-      }
+      display: flex !important;
     }
   }
   // Automatically adjust other elements
@@ -219,6 +211,15 @@ nav.drawer {
     .drawer-margin-adjust {
       margin-left: 0;
     }
+  }
+}
+
+@include media(">lg") {
+  nav.drawer {
+    position: relative;
+    display: flex;
+    margin-left: 0;
+    transition: none;
   }
 }
 

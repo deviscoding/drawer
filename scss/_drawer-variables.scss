@@ -12,9 +12,9 @@ $component-light-bg:              color("white");
 
 // Drawer Variables
 $drawer-color:              gray("900") !default;
-$drawer-header-bg-color:    color("black",.1) !default;
+$drawer-header-bg-color:    rgba(black,.1) !default;
 $drawer-bg-color:           $component-light-bg !default;
-$drawer-hover-color:        color("black") !default;
+$drawer-hover-color:        black !default;
 $drawer-active-color:       $component-light-active-color !default;
 $drawer-disabled-color:     $component-light-disabled-color !default;
 $drawer-width:              230px !default;
@@ -23,3 +23,11 @@ $drawer-spacer-y:           .5rem !default;
 
 // Icon Variables
 $drawer-icon-color:         rgba(gray("700"), .90) !default;
+
+$icon-css-prefix: fa;
+$drawer-icon-width: 16px;
+$drawer-icon-height: 16px;
+$drawer-icon-font-size: 16px;
+$drawer-item-height: 2rem;
+$drawer-item-heading-color: rgba($drawer-color,.7);
+$font-size-root: 14px;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "26dce4eeab99413d666e3f174c174203",
+    "content-hash": "01febb4af168d4f7bca54f565a1790de",
     "packages": [
         {
             "name": "strapless/base",
@@ -121,6 +121,46 @@
                 "strapless"
             ],
             "time": "2017-12-08T15:19:41+00:00"
+        },
+        {
+            "name": "strapless/layout",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/strapless/layout.git",
+                "reference": "27ea1aa4c5ecb5524965b49c1be6b8d0fb51e3a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/strapless/layout/zipball/27ea1aa4c5ecb5524965b49c1be6b8d0fb51e3a4",
+                "reference": "27ea1aa4c5ecb5524965b49c1be6b8d0fb51e3a4",
+                "shasum": ""
+            },
+            "require": {
+                "strapless/base": "^1.1",
+                "strapless/colors": "^1.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron M Jones",
+                    "homepage": "http://www.jonesiscoding.com"
+                }
+            ],
+            "description": "CSS Classes, Mixins and Functions to control header, footer, and basic layout in the StrapLess CSS Framework.  Also usable for other CSS projects.",
+            "homepage": "https://www.github.com/strapless/layout",
+            "keywords": [
+                "css",
+                "layout",
+                "sass",
+                "scss",
+                "strapless"
+            ],
+            "time": "2017-12-05T17:15:44+00:00"
         }
     ],
     "packages-dev": [],
