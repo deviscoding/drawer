@@ -3,13 +3,13 @@
 
 @if not($enable-framework) {
 /*!
- * StrapLess Drawer v1.1 (http://github.com/strapless/drawer)
+ * StrapLess Drawer v1.1.1 (http://github.com/strapless/drawer)
  * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
  */
 }
 
 header .navbar-toggler {
-  transition: 1s ease-in-out;
+  transition: .5s ease-in-out;
   display: flex;
 }
 
@@ -27,12 +27,11 @@ nav.drawer {
   color: $drawer-color;
   @include elevation(2);
   // Hidden by moving off screen
-  z-index: 0;
+  z-index: const(ZINDEX_MODAL);
   margin-left: -$drawer-width;
-  transition: margin-left 1s ease-in-out;
   display: flex;
   .drawer-header, .drawer-footer {
-    transition: opacity 1s ease-in-out;
+    transition: opacity .5s ease-in-out;
     opacity: 1;
     display: block;
   }
@@ -44,9 +43,15 @@ nav.drawer {
   }
 }
 
-.temporary.on, .temporary.expanding, k {
+.temporary, .persistent {
   nav.drawer {
-    z-index: const(ZINDEX_MODAL);
+    transition: margin-left .5s ease-in-out;
+  }
+}
+
+.persistent, .permanent {
+  nav.drawer {
+    display: none;
   }
 }
 
@@ -76,7 +81,7 @@ nav.drawer {
     display: block;
   }
   .drawer-link, .drawer-item > *:not(.drawer-group) {
-    padding: 0rem 1.5rem;
+    padding: 0 1.5rem;
     min-height: $drawer-item-height;
     display: flex;
     flex: 1 0 auto;
@@ -163,6 +168,11 @@ nav.drawer {
 }
 
 @include media(">md") {
+  .permanent, .persistent {
+    nav.drawer {
+      display: flex;
+    }
+  }
   nav.drawer {
     .drawer-header, .drawer-footer {
       opacity: 0;
@@ -172,10 +182,8 @@ nav.drawer {
     position: relative;
     // Layer below page header and footer.
     max-height: none;
-    padding-top: 64px;
     z-index: 0 !important;
     margin-right: $drawer-spacer-x;
-    height: 100%;
   }
   html.persistent:not(.on) {
     nav.drawer {
@@ -197,11 +205,12 @@ nav.drawer {
     }
   }
   // Automatically adjust other elements
+  $dwu: unit($drawer-width);
   .drawer-padding-adjust {
-    padding-left: $drawer-width + space-x(md, unit($drawer-width));
+    padding-left: $drawer-width + space-x(md, $dwu);
   }
   .drawer-margin-adjust {
-    margin-left: $drawer-width + space-x(md, unit($drawer-width));
+    margin-left: $drawer-width + space-x(md, $dwu);
   }
   .persistent:not(.on) {
     // Unless we're a turned off persistent drawer
@@ -215,6 +224,11 @@ nav.drawer {
 }
 
 @include media(">lg") {
+  .permanent, .persistent {
+    nav.drawer {
+      display: flex;
+    }
+  }
   nav.drawer {
     position: relative;
     display: flex;

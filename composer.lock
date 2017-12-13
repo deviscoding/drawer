@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "strapless/base",
-            "version": "1.1.5",
+            "version": "1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/strapless/base.git",
-                "reference": "32ab7f32e6745e18ec46ca1e49e19e8ab347ec58"
+                "reference": "a7ba47d09e32b6b9200db0f24d360cc73d75d253"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/strapless/base/zipball/32ab7f32e6745e18ec46ca1e49e19e8ab347ec58",
-                "reference": "32ab7f32e6745e18ec46ca1e49e19e8ab347ec58",
+                "url": "https://api.github.com/repos/strapless/base/zipball/a7ba47d09e32b6b9200db0f24d360cc73d75d253",
+                "reference": "a7ba47d09e32b6b9200db0f24d360cc73d75d253",
                 "shasum": ""
             },
             "type": "library",
@@ -41,7 +41,7 @@
                 "strapless",
                 "variables"
             ],
-            "time": "2017-12-05T01:04:44+00:00"
+            "time": "2017-12-13T13:53:02+00:00"
         },
         {
             "name": "strapless/colors",
@@ -81,16 +81,16 @@
         },
         {
             "name": "strapless/display",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/strapless/display.git",
-                "reference": "15a76063258949cd57379b222ace94e8dbffb644"
+                "reference": "efff0042b09d87e6b019bb6a4a1ead3899242d56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/strapless/display/zipball/15a76063258949cd57379b222ace94e8dbffb644",
-                "reference": "15a76063258949cd57379b222ace94e8dbffb644",
+                "url": "https://api.github.com/repos/strapless/display/zipball/efff0042b09d87e6b019bb6a4a1ead3899242d56",
+                "reference": "efff0042b09d87e6b019bb6a4a1ead3899242d56",
                 "shasum": ""
             },
             "require": {
@@ -120,20 +120,20 @@
                 "scss",
                 "strapless"
             ],
-            "time": "2017-12-08T15:19:41+00:00"
+            "time": "2017-12-13T13:58:58+00:00"
         },
         {
             "name": "strapless/layout",
-            "version": "1.0",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/strapless/layout.git",
-                "reference": "27ea1aa4c5ecb5524965b49c1be6b8d0fb51e3a4"
+                "reference": "1ce43728416243b1a3c6cc1d623f243bfb468221"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/strapless/layout/zipball/27ea1aa4c5ecb5524965b49c1be6b8d0fb51e3a4",
-                "reference": "27ea1aa4c5ecb5524965b49c1be6b8d0fb51e3a4",
+                "url": "https://api.github.com/repos/strapless/layout/zipball/1ce43728416243b1a3c6cc1d623f243bfb468221",
+                "reference": "1ce43728416243b1a3c6cc1d623f243bfb468221",
                 "shasum": ""
             },
             "require": {
@@ -160,7 +160,7 @@
                 "scss",
                 "strapless"
             ],
-            "time": "2017-12-05T17:15:44+00:00"
+            "time": "2017-12-12T15:27:49+00:00"
         }
     ],
     "packages-dev": [],

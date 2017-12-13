@@ -1,7 +1,7 @@
 /**
  * jQuery Plugin for managing a navigation drawer.
  *
- * @version v1.1
+ * @version v1.1.1
  * @license https://github.com/strapless/strapless/LICENSE
  * @author  Aaron M Jones <am@jonesiscoding.com>
  */
@@ -39,6 +39,14 @@
         }
       };
 
+      drawer.transition = function() {
+        if(!$html.hasClass('temporary') && drawer.isTemporary()) {
+          $target.addClass('fade');
+        } else {
+          $target.removeClass('fade');
+        }
+      };
+
       drawer.collapseGroup = function($heading) {
         var $group = $heading.parent('.list-group');
         if(!$group.data('bs.collapse')) {
@@ -52,7 +60,6 @@
 
       $trigger.on( 'click', function ( e ) {
         if ( $trigger.is( 'a' ) ) { e.preventDefault(); }
-        $html.addClass('animate');
         if ( typeof $target !== 'undefined' ) {
           if ( drawer.isTemporary() ) {
             $html.toggleClass('on');
@@ -62,16 +69,12 @@
         }
       } );
 
-      $target.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
-        $html.removeClass('animate')
-      });
-
       $('body').on('click.collapse-group.data-api', '[data-toggle=collapse-group]', function (e) {
         e.preventDefault();
         drawer.collapseGroup($(this));
       });
 
-      $(window).afterwards('resize',function() { drawer.init(); });
+      $(window).afterwards('resize',function() { drawer.transition(); drawer.init(); });
 
       drawer.init();
 
