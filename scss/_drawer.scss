@@ -2,10 +2,10 @@
 @import "drawer-mixins";
 
 @if not($enable-framework) {
-/*!
- * StrapLess Drawer v1.1.1 (http://github.com/strapless/drawer)
- * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
- */
+  /*!
+   * StrapLess Drawer v1.1.2 (http://github.com/strapless/drawer)
+   * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
+   */
 }
 
 header .navbar-toggler {
@@ -78,7 +78,7 @@ nav.drawer {
     padding: 0 0 .25rem 0;
   }
   .drawer-item {
-    display: block;
+    display: flex !important;
   }
   .drawer-link, .drawer-item > *:not(.drawer-group) {
     padding: 0 1.5rem;
@@ -86,6 +86,7 @@ nav.drawer {
     display: flex;
     flex: 1 0 auto;
     align-items: center;
+    flex-direction: row;
   }
   .drawer-item-heading {
     color: $drawer-item-heading-color;
@@ -207,9 +208,11 @@ nav.drawer {
   // Automatically adjust other elements
   $dwu: unit($drawer-width);
   .drawer-padding-adjust {
+    transition: padding-left .5s ease-in-out;
     padding-left: $drawer-width + space-x(md, $dwu);
   }
   .drawer-margin-adjust {
+    transition: margin-left .5s ease-in-out;
     margin-left: $drawer-width + space-x(md, $dwu);
   }
   .persistent:not(.on) {
@@ -237,8 +240,6 @@ nav.drawer {
   }
 }
 
-nav.drawer + .container-fluid {
+nav.drawer + .container {
   flex: 1 1 auto;
-  margin-bottom: 1rem;
-  width: auto;
 }

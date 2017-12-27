@@ -1,7 +1,7 @@
 /*!
- * StrapLess Drawer v1.1.1 (http://github.com/strapless/drawer)
- * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
- */
+   * StrapLess Drawer v1.1.2 (http://github.com/strapless/drawer)
+   * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
+   */
 header .navbar-toggler {
   -webkit-transition: .5s ease-in-out;
   -o-transition: .5s ease-in-out;
@@ -93,7 +93,9 @@ nav.drawer .drawer-group {
 }
 
 nav.drawer .drawer-item {
-  display: block;
+  display: -webkit-flex  !important;
+  display: -ms-flexbox  !important;
+  display: flex  !important;
 }
 
 nav.drawer .drawer-link, nav.drawer .drawer-item > *:not(.drawer-group) {
@@ -109,6 +111,9 @@ nav.drawer .drawer-link, nav.drawer .drawer-item > *:not(.drawer-group) {
   -ms-grid-row-align: center;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 nav.drawer .drawer-item-heading {
@@ -235,13 +240,19 @@ nav.drawer .drawer-hide {
     -ms-transform: translateX(0);
     transform: translateX(0);
     display: -webkit-flex  !important;
-    display: -ms-flexbox  !important;
-    display: flex  !important;
+  display: -ms-flexbox  !important;
+  display: flex  !important;
   }
   .drawer-padding-adjust {
+    -webkit-transition: padding-left .5s ease-in-out;
+    -o-transition: padding-left .5s ease-in-out;
+    transition: padding-left .5s ease-in-out;
     padding-left: 244px;
   }
   .drawer-margin-adjust {
+    -webkit-transition: margin-left .5s ease-in-out;
+  -o-transition: margin-left .5s ease-in-out;
+  transition: margin-left .5s ease-in-out;
     margin-left: 244px;
   }
   .persistent:not(.on) .drawer-padding-adjust {
@@ -270,10 +281,8 @@ nav.drawer .drawer-hide {
   }
 }
 
-nav.drawer + .container-fluid {
+nav.drawer + .container {
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  margin-bottom: 1rem;
-  width: auto;
 }
