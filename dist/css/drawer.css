@@ -1,5 +1,5 @@
 /*!
-   * StrapLess Drawer v1.1.2 (http://github.com/strapless/drawer)
+   * StrapLess Drawer v1.1.3 (http://github.com/strapless/drawer)
    * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
    */
 header .navbar-toggler {
@@ -28,7 +28,7 @@ nav.drawer {
   color: #212529;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   z-index: 1050;
-  margin-left: -230px;
+  margin-left: -237px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -42,18 +42,76 @@ nav.drawer .drawer-header, nav.drawer .drawer-footer {
   display: block;
 }
 
-.on nav.drawer {
-  margin-left: 0;
-}
-
-.temporary nav.drawer, .persistent nav.drawer {
+nav.drawer, .drawer-margin-adjust {
   -webkit-transition: margin-left .5s ease-in-out;
   -o-transition: margin-left .5s ease-in-out;
   transition: margin-left .5s ease-in-out;
 }
 
-.persistent nav.drawer, .permanent nav.drawer {
-  display: none;
+.drawer-padding-adjust {
+  -webkit-transition: padding-left .5s ease-in-out;
+  -o-transition: padding-left .5s ease-in-out;
+  transition: padding-left .5s ease-in-out;
+}
+
+.on nav.drawer {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .persistent nav.drawer {
+    display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+    position: relative;
+    max-height: none;
+    margin-right: 0.5rem;
+    z-index: 0;
+  }
+  .persistent nav.drawer .drawer-header, .persistent nav.drawer .drawer-footer {
+    opacity: 0;
+    display: none;
+  }
+  .persistent nav.drawer {
+    margin-left: -237px;
+  }
+  .persistent .drawer-padding-adjust {
+    padding-left: 0;
+  }
+  .persistent .drawer-margin-adjust {
+    margin-left: 0;
+  }
+  .permanent nav.drawer {
+    display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+    position: relative;
+    max-height: none;
+    margin-right: 0.5rem;
+    z-index: 0;
+  }
+  .permanent nav.drawer .drawer-header, .permanent nav.drawer .drawer-footer {
+    opacity: 0;
+    display: none;
+  }
+  .permanent nav.drawer {
+    margin-left: 0;
+  }
+  .permanent .drawer-padding-adjust {
+    padding-left: 244px;
+  }
+  .permanent .drawer-margin-adjust {
+    margin-left: 244px;
+  }
+  .permanent header .navbar-toggler {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+    display: none !important;
+  }
+  .permanent nav.drawer {
+    display: none;
+  }
 }
 
 nav.drawer .drawer-link {
@@ -210,74 +268,59 @@ nav.drawer .drawer-hide {
 }
 
 @media screen and (min-width: 993px) {
-  .permanent nav.drawer, .persistent nav.drawer {
+  nav.drawer {
     display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  }
-  nav.drawer {
-    margin-left: 0;
     position: relative;
     max-height: none;
-    z-index: 0 !important;
     margin-right: 0.5rem;
+    z-index: 0;
   }
   nav.drawer .drawer-header, nav.drawer .drawer-footer {
     opacity: 0;
     display: none;
   }
-  html.persistent:not(.on) nav.drawer {
-    margin-left: -230px !important;
-  }
-  html:not(.persistent) header .navbar-toggler {
-    -webkit-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-    transform: translateX(-100%);
-    display: none !important;
-  }
-  .persistent header .navbar-toggler {
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    transform: translateX(0);
-    display: -webkit-flex  !important;
-  display: -ms-flexbox  !important;
-  display: flex  !important;
+  nav.drawer {
+    margin-left: 0;
   }
   .drawer-padding-adjust {
-    -webkit-transition: padding-left .5s ease-in-out;
-    -o-transition: padding-left .5s ease-in-out;
-    transition: padding-left .5s ease-in-out;
     padding-left: 244px;
   }
   .drawer-margin-adjust {
-    -webkit-transition: margin-left .5s ease-in-out;
-  -o-transition: margin-left .5s ease-in-out;
-  transition: margin-left .5s ease-in-out;
     margin-left: 244px;
   }
-  .persistent:not(.on) .drawer-padding-adjust {
+  html.touch:not(.on) nav.drawer, html.persistent:not(.on) nav.drawer {
+    margin-left: -237px;
+  }
+  html.touch:not(.on) .drawer-padding-adjust, html.persistent:not(.on) .drawer-padding-adjust {
     padding-left: 0;
   }
-  .persistent:not(.on) .drawer-margin-adjust {
+  html.touch:not(.on) .drawer-margin-adjust, html.persistent:not(.on) .drawer-margin-adjust {
     margin-left: 0;
   }
 }
 
 @media screen and (min-width: 1201px) {
-  .permanent nav.drawer, .persistent nav.drawer {
-    display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  }
   nav.drawer {
-    position: relative;
+    margin-left: 0;
+  }
+  .drawer-padding-adjust {
+    padding-left: 244px;
+  }
+  .drawer-margin-adjust {
+    margin-left: 244px;
+  }
+  header .navbar-toggler {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+    display: none !important;
+  }
+  .permanent nav.drawer {
     display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-    margin-left: 0;
-    -webkit-transition: none;
-    -o-transition: none;
-    transition: none;
   }
 }
 

@@ -62,7 +62,7 @@ jQuery.fn.extend( {
 /**
  * jQuery Plugin for managing a navigation drawer.
  *
- * @version v1.1.2
+ * @version v1.1.3
  * @license https://github.com/strapless/strapless/LICENSE
  * @author  Aaron M Jones <am@jonesiscoding.com>
  */
@@ -78,7 +78,7 @@ jQuery.fn.extend( {
       var $html    = $('html');
 
       drawer.isTemporary = function() {
-        return $.fn.isBreakpoint( [ 'xs', 'sm', 'md' ] ) || ($.fn.isBreakpoint(['md']) && $('html').hasClass('touch'));
+        return $.fn.isBreakpoint( [ 'xs', 'sm', 'md' ] ) || ($.fn.isBreakpoint(['md']) && $html.hasClass('touch'));
       };
 
       drawer.isPersistent = function() {
@@ -88,9 +88,10 @@ jQuery.fn.extend( {
       drawer.init = function() {
         if ( typeof $target !== 'undefined' ) {
           if(drawer.isTemporary()) {
-            $html.addClass('animate temporary').removeClass('on persistent permanent');
+            console.log('temporary');
+            $html.removeClass('on persistent permanent').addClass('temporary');
           } else if(drawer.isPersistent()) {
-            if(!$html.hasClass('temporary')) {
+            if(!$html.hasClass('temporary') && !$html.hasClass('touch')) {
               $html.addClass('on');
             }
             $html.addClass('animate persistent').removeClass('temporary permanent');

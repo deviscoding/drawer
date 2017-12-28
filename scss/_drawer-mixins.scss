@@ -26,3 +26,80 @@
     }
   }
 }
+
+@import "drawer-variables";
+
+@mixin drawer-icons {
+  @if component("icons") {
+    //noinspection SassScssUnresolvedVariable
+    > .#{$icon-css-prefix} {
+      width: $drawer-icon-width;
+      color: $drawer-icon-color;
+      margin-right: 1rem;
+    }
+    @if component-feature("icons","font") {
+      //noinspection SassScssUnresolvedVariable
+      > i.#{$icon-css-prefix} {
+        font-size: $drawer-icon-font-size;
+        line-height: $drawer-icon-height;
+        vertical-align: -15%;
+        text-align: left;
+      }
+    }
+    @if component-feature("icons","svg") {
+      //noinspection SassScssUnresolvedVariable
+      > svg.#{$icon-css-prefix} {
+        height: $drawer-icon-height;
+        fill: $drawer-icon-color;
+      }
+    }
+  }
+}
+
+@mixin on() {
+  nav.drawer {
+    margin-left: 0;
+  }
+}
+
+@mixin persistent-on() {
+  $dwu: unit($drawer-width);
+  $adjust: $drawer-width + space-x(md, $dwu);
+
+  @include on;
+  .drawer-padding-adjust { padding-left: $adjust; }
+  .drawer-margin-adjust { margin-left: $adjust; }
+  @content;
+}
+
+@mixin persistent-off() {
+  nav.drawer { margin-left: (0 - $drawer-width - computed($drawer-spacer-x)); }
+  .drawer-padding-adjust { padding-left: 0; }
+  .drawer-margin-adjust { margin-left: 0; }
+  @content;
+}
+
+@mixin persistent() {
+  nav.drawer {
+    display: flex;
+    position: relative;
+    max-height: none;
+    margin-right: $drawer-spacer-x;
+    z-index: 0;
+    .drawer-header, .drawer-footer {
+      opacity: 0;
+      display: none;
+    }
+  }
+}
+
+@mixin permanent($repeat: false) {
+  @if $repeat { @include persistent; }
+  @include persistent-on();
+  //nav.drawer { transition: none; }
+  header .navbar-toggler {
+    // Toggle off by default
+    transform: translateX(-100%);
+    display: none !important;
+  }
+}
