@@ -62,7 +62,7 @@ jQuery.fn.extend( {
 /**
  * jQuery Plugin for managing a navigation drawer.
  *
- * @version v1.1.3
+ * @version v1.1.4
  * @license https://github.com/strapless/strapless/LICENSE
  * @author  Aaron M Jones <am@jonesiscoding.com>
  */
@@ -110,13 +110,14 @@ jQuery.fn.extend( {
       };
 
       drawer.collapseGroup = function($heading) {
-        var $group = $heading.parent('.list-group');
-        if(!$group.data('bs.collapse')) {
-          var height = $heading.outerHeight() - $group.marginBottom;
-          $group.css('min-height',height).addClass('collapse');
-          $group.collapse('toggle');
-        } else {
-          $group.collapse('toggle');
+        var $group = $heading.parent('.drawer-group');
+        if($group.length > 0) {
+          if(!$group.data('bs.collapse')) {
+            var height = ($heading.outerHeight() || 0) - ($group.marginBottom || 0);
+            $group.css('min-height',height).collapse({toggle: false});
+          } else {
+            $group.collapse('toggle');
+          }
         }
       };
 
