@@ -3,7 +3,7 @@
 
 @if not($enable-framework) {
   /*!
-   * StrapLess Drawer v1.1.4 (http://github.com/strapless/drawer)
+   * StrapLess Drawer v1.1.5 (http://github.com/strapless/drawer)
    * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
    */
 }
@@ -120,6 +120,7 @@ nav.drawer {
 
 // Styles for Header/Body/Footer
 nav.drawer {
+  overflow-x: hidden; // Hide drawer body scrollbar.
   .drawer-header {
     flex: 0 0 auto;
     background-color: $drawer-header-bg-color;
@@ -160,6 +161,8 @@ nav.drawer {
     // Make sure we scroll properly
     overflow-y: scroll;
     overflow-x: hidden;
+    // Hide the vertical scrollbar by using negative margin.
+    margin-right: -17px;
     // Use flex columns for stacking
     display: flex;
     flex-direction: column;

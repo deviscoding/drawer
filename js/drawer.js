@@ -1,7 +1,7 @@
 /**
  * jQuery Plugin for managing a navigation drawer.
  *
- * @version v1.1.4
+ * @version v1.1.5
  * @license https://github.com/strapless/strapless/LICENSE
  * @author  Aaron M Jones <am@jonesiscoding.com>
  */
