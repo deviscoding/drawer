@@ -1,105 +1,126 @@
 @import "drawer-variables";
 
-@mixin drawer-icons {
-  @if component("icons") {
-    //noinspection SassScssUnresolvedVariable
-    > .#{$icon-css-prefix} {
-      width: $drawer-icon-width;
-      color: $drawer-icon-color;
-      margin-right: 1rem;
-    }
-    @if component-feature("icons","font") {
-      //noinspection SassScssUnresolvedVariable
-      > i.#{$icon-css-prefix} {
-        font-size: $drawer-icon-font-size;
-        line-height: $drawer-icon-height;
-        vertical-align: -15%;
-        text-align: left;
-      }
-    }
-    @if component-feature("icons","svg") {
-      //noinspection SassScssUnresolvedVariable
-      > svg.#{$icon-css-prefix} {
-        height: $drawer-icon-height;
-        fill: $drawer-icon-color;
+@function drawer-infix($criteria) {
+  $bp: quote($criteria);
+  @if($bp == "touch") {
+    @return "-touch";
+  } @else {
+    @each $b,$min in $grid-breakpoints {
+      @if quote($b) == $bp {
+        @if $min == 0 {
+          @return null;
+        } @else {
+          @return -#{$b};
+        }
       }
     }
   }
 }
 
-@import "drawer-variables";
-
-@mixin drawer-icons {
-  @if component("icons") {
-    //noinspection SassScssUnresolvedVariable
-    > .#{$icon-css-prefix} {
-      width: $drawer-icon-width;
-      color: $drawer-icon-color;
-      margin-right: 1rem;
-    }
-    @if component-feature("icons","font") {
-      //noinspection SassScssUnresolvedVariable
-      > i.#{$icon-css-prefix} {
-        font-size: $drawer-icon-font-size;
-        line-height: $drawer-icon-height;
-        vertical-align: -15%;
-        text-align: left;
-      }
-    }
-    @if component-feature("icons","svg") {
-      //noinspection SassScssUnresolvedVariable
-      > svg.#{$icon-css-prefix} {
-        height: $drawer-icon-height;
-        fill: $drawer-icon-color;
-      }
-    }
-  }
-}
-
-@mixin on() {
-  nav.drawer {
-    margin-left: 0;
-  }
-}
-
-@mixin persistent-on() {
-  $dwu: unit($drawer-width);
-  $adjust: $drawer-width + space-x(md, $dwu);
-
-  @include on;
-  .drawer-padding-adjust { padding-left: $adjust; }
-  .drawer-margin-adjust { margin-left: $adjust; }
-  @content;
-}
-
-@mixin persistent-off() {
-  nav.drawer { margin-left: (0 - $drawer-width - computed($drawer-spacer-x)); }
-  .drawer-padding-adjust { padding-left: 0; }
-  .drawer-margin-adjust { margin-left: 0; }
-  @content;
-}
-
-@mixin persistent() {
-  nav.drawer {
-    display: flex;
-    position: relative;
-    max-height: none;
-    margin-right: $drawer-spacer-x;
-    z-index: 0;
+@mixin drawer-temporary($bp) {
+  $infix: drawer-infix($bp);
+  $offset: (0 - $drawer-width);
+  .drawer#{$infix}-temporary {
+    margin-left: $offset;
+    position: $drawer-temporary-position;
+    z-index: $drawer-temporary-zindex;
+    width: $drawer-width;
     .drawer-header, .drawer-footer {
-      opacity: 0;
+      display: flex;
+    }
+  }
+  html.persistent, html.permanent {
+    .drawer.drawer#{$infix}-temporary  {
+      position: $drawer-persistent-position;
+      z-index: $drawer-persistent-zindex;
+      .drawer-header, .drawer-footer {
+        display: none;
+      }
+    }
+  }
+  html.on {
+
+    .drawer#{$infix}-temporary {
+      margin-left: 0;
+    }
+    .drawer-backdrop {
+      position: fixed;
+      opacity: $drawer-backdrop-opacity;
+    }
+  }
+}
+
+@mixin drawer-persistent($bp) {
+  $infix: drawer-infix($bp);
+  $offset: (0 - $drawer-width);
+  .drawer.drawer#{$infix}-persistent {
+    margin-left: 0;
+    position: $drawer-persistent-position;
+    z-index: $drawer-persistent-zindex;
+    width: $drawer-width;
+    .drawer-header, .drawer-footer {
       display: none;
     }
   }
+  .m#{$infix}-drawer {
+    margin-left: $drawer-width;
+  }
+  .p#{$infix}-drawer {
+    padding-left: $drawer-width;
+  }
+  html.off {
+    .drawer#{$infix}-persistent {
+      margin-left: $offset;
+    }
+    .m#{$infix}-drawer {
+      margin-left: inherit;
+    }
+    .p#{$infix}-drawer {
+      padding-left: inherit;
+    }
+  }
 }
 
-@mixin permanent($repeat: false) {
-  @if $repeat { @include persistent; }
-  @include persistent-on();
-  //nav.drawer { transition: none; }
-  header .navbar-toggler {
-    // Toggle off by default
-    transform: translateX(-100%);
-    display: none !important;
+@mixin drawer-permanent($bp) {
+  $infix: drawer-infix($bp);
+  .drawer.drawer#{$infix}-permanent {
+    margin-left: 0;
+    position: $drawer-permanent-position;
+    z-index: $drawer-permanent-zindex;
+    .drawer-header, .drawer-footer {
+      display: none;
+    }
+  }
+  .m#{$infix}-drawer {
+    margin-left: $drawer-width;
+  }
+  .p#{$infix}-drawer {
+    padding-left: $drawer-width;
+  }
+}
+
+@mixin drawer-icons {
+  @if component("icons") {
+    //noinspection SassScssUnresolvedVariable
+    > .#{$icon-css-prefix} {
+      width: $drawer-icon-width;
+      color: $drawer-icon-color;
+      margin-right: 1rem;
+    }
+    @if component-feature("icons","font") {
+      //noinspection SassScssUnresolvedVariable
+      > i.#{$icon-css-prefix} {
+        font-size: $drawer-icon-font-size;
+        line-height: $drawer-icon-height;
+        vertical-align: -15%;
+        text-align: left;
+      }
+    }
+    @if component-feature("icons","svg") {
+      //noinspection SassScssUnresolvedVariable
+      > .#{$icon-css-prefix} {
+        height: $drawer-icon-height;
+      }
+    }
   }
 }

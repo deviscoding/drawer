@@ -3,41 +3,46 @@
 
 @if not($enable-framework) {
   /*!
-   * StrapLess Drawer v1.1.5 (http://github.com/strapless/drawer)
+   * StrapLess Drawer v2.0 (http://github.com/strapless/drawer)
    * Licensed under MIT (https://github.com/strapless/drawer/blob/master/LICENSE)
    */
 }
 
-header .navbar-toggler {
-  transition: .5s ease-in-out;
+.drawer {
+  // Borders or Elevation
+  @include elevation(16);
+  overflow: hidden;
+  // Display & Size
   display: flex;
-}
-
-nav.drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: $drawer-width;
-  max-height: 100vh;
   flex-direction: column;
   flex: 0 0 auto;
-  // Colors
-  background-color: $drawer-bg-color;
+  width: $drawer-width;
+  // Position
+  position: $drawer-default-position;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: initial;
+  z-index: $drawer-default-zindex;
+  margin-left: (0 - $drawer-width);
+  // Color
   color: $drawer-color;
-  @include elevation(2);
-  // Hidden by moving off screen
-  z-index: const(ZINDEX_MODAL);
-  margin-left: (0 - $drawer-width - computed($drawer-spacer-x));
-  display: flex;
+  background-color: $drawer-bg-color;
   .drawer-header, .drawer-footer {
-    transition: opacity .5s ease-in-out;
-    opacity: 1;
-    display: block;
+    display: flex;
   }
 }
 
-nav.drawer, .drawer-margin-adjust {
+.drawer-backdrop {
+  background-color: rgba($drawer-backdrop-bg, $drawer-backdrop-opacity);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-modal-backdrop;
+}
+
+.drawer, .drawer-margin-adjust {
   transition: margin-left .5s ease-in-out;
 }
 
@@ -45,152 +50,178 @@ nav.drawer, .drawer-margin-adjust {
   transition: padding-left .5s ease-in-out;
 }
 
-.on {
-  @include on;
-}
-
-@include media("<lg") {
-  .persistent {
-    @include persistent;
-    @include persistent-off;
-  }
-  .permanent {
-    @include permanent(true);
-    nav.drawer {
-      display: none;
-    }
+.navbar-toggler {
+  background-color: transparent;
+  border: none;
+  display: var(--drawer-toggler-display);
+  cursor: pointer;
+  &:focus {
+    outline: 0;
   }
 }
 
-// Styles for Drawer Groups
-nav.drawer {
+html.on {
+  body {
+    overflow-y: hidden; // prevent scroll when temp drawer is open.
+  }
+}
+
+.drawer-header {
+  flex: 0 0 auto;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: $navbar-height * 2;
+  background-color: $drawer-header-bg-color;
+  border-bottom: 1px solid rgba($drawer-color, .125);
+  overflow:  hidden;
+}
+.drawer-body {
+  min-width: $drawer-width;
+  // Make sure we scroll properly
+  overflow-y: scroll;
+  overflow-x: hidden;
+  // Hide the vertical scrollbar by using negative margin.
+  margin-right: -17px;
+  // Use flex columns for stacking
+  display: flex;
+  flex-direction: column;
+  // Allow to shrink for scrolling on smaller screen.
+  flex: 1 1 0%;
+  // Padding only to top and bottom
+  padding: $drawer-spacer-y 0;
+}
+.drawer-footer {
+  flex: 0 1 auto;
+  background-color: $drawer-footer-bg-color;
+  color: $drawer-color;
+  padding: $drawer-spacer-y $drawer-spacer-x;
+}
+
+// Drawer Links
+.drawer-link, .drawer-item-heading {
+  padding: 0 $drawer-spacer-x;
+  min-height: $drawer-item-height;
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  flex-direction: row;
+}
+.drawer-link {
+  color: $drawer-color;
+  text-decoration: none !important;
+  @include drawer-icons;
+  &:hover, &:focus {
+    background-color: gray(200);
+    color: $drawer-hover-color;
+  }
+}
+.drawer-header {
   .drawer-link {
-    color: $drawer-color;
-    text-decoration: none !important;
-    @include drawer-icons;
+    cursor: pointer;
     &:hover, &:focus {
-      background-color: gray(200);
-      color: $drawer-hover-color;
+      background-color: transparent;
     }
   }
-  .active > .drawer-link, .drawer-link:active {
-    color: $drawer-active-color;
+}
+.active > .drawer-link, .drawer-link:active {
+  color: $drawer-active-color;
+}
+.disabled > .drawer-link, .drawer-link.disabled {
+  color: $drawer-disabled-color;
+}
+.drawer-item-heading {
+  color: $drawer-item-heading-color;
+  font-size: .9rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+// Drawer Groups & Items
+.drawer-group {
+  // Separator between groups
+  margin: .25rem 0 0 0;
+  padding: 0 0 .25rem 0;
+  border: 0 solid rgba($drawer-color, .125);
+  border-top-width: 1px;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  &:first-child {
+    border-top-width: 0;
   }
-  .disabled > .drawer-link, .drawer-link.disabled {
-    color: $drawer-disabled-color;
+}
+.drawer-item {
+  display: flex !important;
+}
+.drawer-footer .drawer-item:first-child {
+  border-top-width: 1px;
+}
+
+// Collapsing Drawer Groups
+.drawer-group.drawer-group-collapse {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+  > .drawer-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1 0 100%;
+  }
+  [data-toggle="collapse-group"] > .drawer-item-heading {
+    position: relative;
+    @include svg-before(8px, $drawer-chevron, .3) {
+      transform-origin: center center;
+      transition-duration: 0.35s;
+      right: 2rem;
+      position: absolute;
+    }
+  }
+}
+.drawer-group-collapse[aria-expanded="true"] {
+  [data-toggle="collapse-group"] > .drawer-item-heading::before {
+    transform: rotate(-180deg);
+  }
+}
+.drawer-group.collapse:not(.show):not(.in) {
+  height: 0;
+  display: flex !important;
+}
+
+// Special Drawer Items
+.drawer-account {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  padding-top: $drawer-spacer-y;
+  padding-bottom: $drawer-spacer-y;
+  .list-unstyled {
+    margin-bottom: 0;
+  }
+  [data-toggle="collapse"] {
+    background: transparent inline-svg($drawer-caret) no-repeat right 1rem center;
   }
   .drawer-group {
-    // Separator between groups
-    margin: .25rem 0 0 0;
-    padding: 0 0 .25rem 0;
-  }
-  .drawer-item {
-    display: flex !important;
-  }
-  .drawer-link, .drawer-item > *:not(.drawer-group) {
-    padding: 0 1.5rem;
-    min-height: $drawer-item-height;
-    display: flex;
-    flex: 1 0 auto;
-    align-items: center;
-    flex-direction: row;
-  }
-  .drawer-item-heading {
-    color: $drawer-item-heading-color;
-    font-size: .9rem;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  .drawer-body {
-    .drawer-group {
-      border: 0 solid rgba(black, .125);
-      border-top-width: 1px;
-      &:first-child {
-        border-top-width: 0;
-      }
-    }
-  }
-  .drawer-footer {
-    .drawer-item:first-child {
-      border-top-width: 1px;
-    }
+    border-top-width: 0;
+    margin: .25rem 0 0 0 !important;
+    padding: 0 !important;
+    flex-direction: column !important;
+    width: 100%;
   }
 }
 
-// Styles for Header/Body/Footer
-nav.drawer {
-  overflow-x: hidden; // Hide drawer body scrollbar.
-  .drawer-header {
-    flex: 0 0 auto;
-    background-color: $drawer-header-bg-color;
-    [data-toggle] {
-      flex: 1 0 auto;
-    }
-    .account-item {
-      flex: 0 1 auto;
-      border-bottom: 1px solid rgba(black, .125);
-      > a:hover, > a:focus {
-        background-color: transparent;
-      }
-    }
-    > a, .account-item > a {
-      &:hover, &:focus {
-        outline: 0;
-        background-color: transparent;
-      }
-    }
-    a.account {
-      display: flex;
-      align-items: center;
-      > .list-unstyled {
-        margin-bottom: 0;
-      }
-      @if component("icons") {
-        //noinspection SassScssUnresolvedVariable
-        > .#{$icon-css-prefix} {
-          margin-left: auto;
-          margin-right: -1.25rem;
-          opacity: .2;
-          flex: 0 1 auto;
-        }
-      }
-    }
-  }
-  .drawer-body {
-    // Make sure we scroll properly
-    overflow-y: scroll;
-    overflow-x: hidden;
-    // Hide the vertical scrollbar by using negative margin.
-    margin-right: -17px;
-    // Use flex columns for stacking
-    display: flex;
-    flex-direction: column;
-    // Padding only to top and bottom
-    padding: $drawer-spacer-y 0;
-  }
-  .drawer-footer {
-    // Push footer to bottom
-    margin-top: auto;
-  }
-  .drawer-hide {
-    display: none !important;
-  }
-}
-
-@include media(">md") {
-  @include persistent;
-  @include persistent-on;
-  html.touch:not(.on), html.persistent:not(.on) {
-    @include persistent-off;
-  }
-}
-
-@include media(">lg") {
-  @include permanent(false);
-  .permanent {
-    nav.drawer {
-      display: flex;
+@each $bp, $min in $grid-breakpoints {
+  @if $min == 0 {
+    @include drawer-temporary($bp);
+    @include drawer-persistent($bp);
+    @include drawer-permanent($bp);
+  } @else {
+    @media screen and (min-width: $min) {
+      @include drawer-temporary($bp);
+      @include drawer-persistent($bp);
+      @include drawer-permanent($bp);
     }
   }
 }
