@@ -35,9 +35,10 @@ $drawer-icon-color:         rgba(gray("700"), .90) !default;
 $drawer-icon-width:         16px !default;
 $drawer-icon-height:        16px !default;
 $drawer-icon-font-size:     16px !default;
-$drawer-caret-color:        rgba(#000,.5) !default;
-$drawer-caret:              '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$drawer-caret-color}" d="M0 0l4 4 4-4h-8z" transform="translate(0 2)" /></svg>' !default;
-$drawer-chevron:            '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$drawer-caret-color}" d="M4 0l-4 4 1.5 1.5 2.5-2.5 2.5 2.5 1.5-1.5-4-4z" transform="translate(0 1)" /></svg>' !default;
+$drawer-indicator-size:     8px !default;
+$drawer-indicator-color:    rgba(#000,.5) !default;
+$drawer-caret:              '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$drawer-indicator-color}" d="M0 0l4 4 4-4h-8z" transform="translate(0 2)" /></svg>' !default;
+$drawer-chevron:            '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$drawer-indicator-color}" d="M4 0l-4 4 1.5 1.5 2.5-2.5 2.5 2.5 1.5-1.5-4-4z" transform="translate(0 1)" /></svg>' !default;
 
 // Drawer-Variations
 $drawer-default-position:     relative !default;

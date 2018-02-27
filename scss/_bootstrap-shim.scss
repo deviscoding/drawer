@@ -1,7 +1,7 @@
 // Base Color Shims
-$black:                  #000 !default;
-$white:                  #fff !default;
-$modal-backdrop-bg       $black !default;
+$black:                  #000   !default;
+$white:                  #fff   !default;
+$modal-backdrop-bg:      $black !default;
 
 // Layering Shims
 $zindex-navbar-fixed:    1030 !default;
@@ -11,5 +11,6 @@ $zindex-modal-backdrop:  1040 !default;
 // Other Shims
 $font-size-root:         14px !default;
 $font-size-base:         1rem !default;
-$line-height-base:       1.5 !default;
+$line-height-base:       1.5  !default;
 $modal-backdrop-opacity: .5   !default;
+$navbar-height:          64px !default;
