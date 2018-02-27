@@ -62,7 +62,7 @@ jQuery.fn.extend( {
 /**
  * jQuery Plugin for managing a navigation drawer.
  *
- * @version v1.1.5
+ * @version v2.0
  * @license https://github.com/strapless/strapless/LICENSE
  * @author  Aaron M Jones <am@jonesiscoding.com>
  */
@@ -78,34 +78,25 @@ jQuery.fn.extend( {
       var $html    = $('html');
 
       drawer.isTemporary = function() {
-        return $.fn.isBreakpoint( [ 'xs', 'sm', 'md' ] ) || ($.fn.isBreakpoint(['md']) && $html.hasClass('touch'));
+        return $.fn.isBreakpoint( [ 'xs', 'sm', 'md' ] ) || ($.fn.isBreakpoint(['lg']) && $html.hasClass('touch'));
       };
 
       drawer.isPersistent = function() {
-        return $.fn.isBreakpoint(['lg']) && !drawer.isTemporary();
+        return ($.fn.isBreakpoint(['lg']) || ($.fn.isBreakpoint(['xl']) && $html.hasClass('touch'))) && !drawer.isTemporary();
       };
 
       drawer.init = function() {
         if ( typeof $target !== 'undefined' ) {
           if(drawer.isTemporary()) {
-            console.log('temporary');
-            $html.removeClass('on persistent permanent').addClass('temporary');
+            $html.removeClass('on off persistent permanent').addClass('temporary');
           } else if(drawer.isPersistent()) {
-            if(!$html.hasClass('temporary') && !$html.hasClass('touch')) {
-              $html.addClass('on');
+            if(!$html.hasClass('temporary') && $html.hasClass('touch')) {
+              $html.addClass('off');
             }
-            $html.addClass('animate persistent').removeClass('temporary permanent');
+            $html.addClass('persistent').removeClass('on temporary permanent');
           } else {
-            $html.addClass('animate permanent').removeClass('temporary persistent on');
+            $html.addClass('permanent').removeClass('temporary persistent on off');
           }
-        }
-      };
-
-      drawer.transition = function() {
-        if(!$html.hasClass('temporary') && drawer.isTemporary()) {
-          $target.addClass('fade');
-        } else {
-          $target.removeClass('fade');
         }
       };
 
@@ -127,7 +118,7 @@ jQuery.fn.extend( {
           if ( drawer.isTemporary() ) {
             $html.toggleClass('on');
           } else if (drawer.isPersistent() ) {
-            $html.toggleClass('on');
+            $html.toggleClass('off');
           }
         }
       } );
@@ -137,7 +128,7 @@ jQuery.fn.extend( {
         drawer.collapseGroup($(this));
       });
 
-      $(window).afterwards('resize',function() { drawer.transition(); drawer.init(); });
+      $(window).afterwards('resize',function() { drawer.init(); });
 
       drawer.init();
 
