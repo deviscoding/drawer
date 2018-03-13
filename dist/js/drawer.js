@@ -62,7 +62,7 @@ jQuery.fn.extend( {
 /**
  * jQuery Plugin for managing a navigation drawer.
  *
- * @version v2.0
+ * @version v2.0.1
  * @license https://github.com/strapless/strapless/LICENSE
  * @author  Aaron M Jones <am@jonesiscoding.com>
  */
