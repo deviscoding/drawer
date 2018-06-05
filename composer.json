@@ -1,16 +1,18 @@
 {
-    "name": "strapless/drawer",
+    "name": "deviscoding/drawer",
+    "description": "Responsive navigation drawer with Material Design styling written in CSS & jQuery.",
     "keywords": [
         "responsive",
         "drawer",
         "material",
         "sass",
         "scss",
+        "deviscoding",
         "strapless",
         "css"
     ],
-    "homepage": "https://www.github.com/strapless/drawer",
-    "version": "2.0.3",
+    "homepage": "https://www.github.com/deviscoding/drawer",
+    "version": "2.0.4",
     "authors": [
         {
             "name": "Aaron M Jones",
@@ -18,10 +20,13 @@
         }
     ],
     "license": "MIT",
+    "replace": {
+        "strapless/drawer": "^2.0"
+    },
     "require": {
-        "strapless/colors": "^1.0.4",
-        "strapless/base": "^1.1.1",
-        "strapless/display": "^1.0",
-        "strapless/layout": "^1.0"
+        "deviscoding/colors": "^1.0.4",
+        "deviscoding/base": "^1.1.1",
+        "deviscoding/display": "^1.0",
+        "deviscoding/layout": "^1.0"
     }
 }

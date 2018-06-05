@@ -4,21 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb66a3f901fa303156e25a8d1e01a1a9",
+    "content-hash": "00c8284e578cb14a82bd73c82ad2ab25",
     "packages": [
         {
-            "name": "strapless/base",
-            "version": "1.1.9",
+            "name": "deviscoding/base",
+            "version": "1.1.14",
             "source": {
                 "type": "git",
-                "url": "https://github.com/strapless/base.git",
-                "reference": "f355b4f37397d23a462df114dd416f5024f09051"
+                "url": "https://github.com/deviscoding/base.git",
+                "reference": "49fa118ac7a4188f8da232910d449d5d8ba5cfa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/strapless/base/zipball/f355b4f37397d23a462df114dd416f5024f09051",
-                "reference": "f355b4f37397d23a462df114dd416f5024f09051",
+                "url": "https://api.github.com/repos/deviscoding/base/zipball/49fa118ac7a4188f8da232910d449d5d8ba5cfa0",
+                "reference": "49fa118ac7a4188f8da232910d449d5d8ba5cfa0",
                 "shasum": ""
+            },
+            "replace": {
+                "strapless/base": "^1.1"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -32,7 +35,7 @@
                 }
             ],
             "description": "SASS Functions & mixins for managing variables within various SASS components.",
-            "homepage": "https://www.github.com/strapless/base",
+            "homepage": "https://www.github.com/deviscoding/base",
             "keywords": [
                 "css",
                 "maps",
@@ -41,21 +44,24 @@
                 "strapless",
                 "variables"
             ],
-            "time": "2018-02-08T04:03:31+00:00"
+            "time": "2018-05-24T12:29:40+00:00"
         },
         {
-            "name": "strapless/colors",
-            "version": "1.0.7",
+            "name": "deviscoding/colors",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/strapless/colors.git",
-                "reference": "69a27dd9b4ef2d7957ac4edebbee7cad34bedbd1"
+                "url": "https://github.com/deviscoding/colors.git",
+                "reference": "dd4a6ee5aab611b0f4e7e2d1f8c481caa1203e39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/strapless/colors/zipball/69a27dd9b4ef2d7957ac4edebbee7cad34bedbd1",
-                "reference": "69a27dd9b4ef2d7957ac4edebbee7cad34bedbd1",
+                "url": "https://api.github.com/repos/deviscoding/colors/zipball/dd4a6ee5aab611b0f4e7e2d1f8c481caa1203e39",
+                "reference": "dd4a6ee5aab611b0f4e7e2d1f8c481caa1203e39",
                 "shasum": ""
+            },
+            "replace": {
+                "strapless/colors": "^1.0"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -68,8 +74,8 @@
                     "homepage": "http://www.jonesiscoding.com"
                 }
             ],
-            "description": "SASS color functions, maps and CSS used in StrapLess components.  Can also be used quite effectively in any SASS where one desires an easy way to manage colors.",
-            "homepage": "https://www.github.com/strapless/colors",
+            "description": "SASS color functions, maps and CSS used in DevIsCoding components.  Can also be used quite effectively in any SASS where one desires an easy way to manage colors.",
+            "homepage": "https://www.github.com/deviscoding/colors",
             "keywords": [
                 "color",
                 "map",
@@ -77,19 +83,19 @@
                 "scss",
                 "strapless"
             ],
-            "time": "2018-02-07T13:28:02+00:00"
+            "time": "2018-05-23T15:47:48+00:00"
         },
         {
-            "name": "strapless/display",
+            "name": "deviscoding/display",
             "version": "1.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/strapless/display.git",
+                "url": "https://github.com/deviscoding/display.git",
                 "reference": "efff0042b09d87e6b019bb6a4a1ead3899242d56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/strapless/display/zipball/efff0042b09d87e6b019bb6a4a1ead3899242d56",
+                "url": "https://api.github.com/repos/deviscoding/display/zipball/efff0042b09d87e6b019bb6a4a1ead3899242d56",
                 "reference": "efff0042b09d87e6b019bb6a4a1ead3899242d56",
                 "shasum": ""
             },
@@ -123,63 +129,23 @@
             "time": "2017-12-13T13:58:58+00:00"
         },
         {
-            "name": "strapless/icons",
-            "version": "1.0.1",
+            "name": "deviscoding/icons",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/strapless/icons.git",
-                "reference": "1c7fc4c1801d195cdefa3929605a858b64936d97"
+                "url": "https://github.com/deviscoding/icons.git",
+                "reference": "6b318ae92078407b62cdf15b21c57b3799b1fc27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/strapless/icons/zipball/1c7fc4c1801d195cdefa3929605a858b64936d97",
-                "reference": "1c7fc4c1801d195cdefa3929605a858b64936d97",
+                "url": "https://api.github.com/repos/deviscoding/icons/zipball/6b318ae92078407b62cdf15b21c57b3799b1fc27",
+                "reference": "6b318ae92078407b62cdf15b21c57b3799b1fc27",
                 "shasum": ""
             },
             "require": {
-                "strapless/base": "^1.1.5"
+                "deviscoding/base": "^1.1.5"
             },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Aaron M Jones",
-                    "homepage": "http://www.jonesiscoding.com"
-                }
-            ],
-            "description": "CSS Classes, Mixins and Functions to manage icons for the StrapLess CSS Framework.  Also usable for other CSS projects.",
-            "homepage": "https://www.github.com/strapless/icons",
-            "keywords": [
-                "css",
-                "font",
-                "icons",
-                "sass",
-                "scss",
-                "strapless",
-                "svg"
-            ],
-            "time": "2017-12-05T01:24:05+00:00"
-        },
-        {
-            "name": "strapless/layout",
-            "version": "1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/strapless/layout.git",
-                "reference": "7a0437fe572bcef4e0e8054c5fb9a15d350b041c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/strapless/layout/zipball/7a0437fe572bcef4e0e8054c5fb9a15d350b041c",
-                "reference": "7a0437fe572bcef4e0e8054c5fb9a15d350b041c",
-                "shasum": ""
-            },
-            "require": {
-                "strapless/base": "^1.1",
-                "strapless/colors": "^1.0",
+            "replace": {
                 "strapless/icons": "^1.0"
             },
             "type": "library",
@@ -193,16 +159,64 @@
                     "homepage": "http://www.jonesiscoding.com"
                 }
             ],
-            "description": "CSS Classes, Mixins and Functions to control header, footer, and basic layout in the StrapLess CSS Framework.  Also usable for other CSS projects.",
-            "homepage": "https://www.github.com/strapless/layout",
+            "description": "CSS Classes, Mixins and Functions to manage icons in CSS and SCSS projects.",
+            "homepage": "https://www.github.com/deviscoding/icons",
             "keywords": [
                 "css",
+                "deviscoding",
+                "font",
+                "icons",
+                "sass",
+                "scss",
+                "strapless",
+                "svg"
+            ],
+            "time": "2018-06-04T13:15:00+00:00"
+        },
+        {
+            "name": "deviscoding/layout",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deviscoding/layout.git",
+                "reference": "4582213024fbb575153e8a00736cf6ac0b1841c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deviscoding/layout/zipball/4582213024fbb575153e8a00736cf6ac0b1841c0",
+                "reference": "4582213024fbb575153e8a00736cf6ac0b1841c0",
+                "shasum": ""
+            },
+            "require": {
+                "deviscoding/base": "^1.1",
+                "deviscoding/colors": "^1.0",
+                "deviscoding/icons": "^1.0"
+            },
+            "replace": {
+                "strapless/layout": "^1.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron M Jones",
+                    "homepage": "http://www.jonesiscoding.com"
+                }
+            ],
+            "description": "CSS Classes, Mixins and Functions to control header, footer, and basic layout in the StrapLess CSS Framework.  Also usable for other CSS projects.",
+            "homepage": "https://www.github.com/deviscoding/layout",
+            "keywords": [
+                "css",
+                "deviscoding",
                 "layout",
                 "sass",
                 "scss",
                 "strapless"
             ],
-            "time": "2017-12-29T14:28:46+00:00"
+            "time": "2018-06-04T13:23:43+00:00"
         }
     ],
     "packages-dev": [],
