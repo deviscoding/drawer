@@ -3,14 +3,14 @@
 
 @if not($enable-framework) {
   /*!
-   * DevIsCoding Drawer v2.0.4 (http://github.com/deviscoding/drawer)
+   * DevIsCoding Drawer v2.0.5 (http://github.com/deviscoding/drawer)
    * Licensed under MIT (https://github.com/deviscoding/drawer/blob/master/LICENSE)
    */
 }
 
 .drawer {
   // Borders or Elevation
-  @include elevation(16);
+  @include elevation(8);
   overflow: hidden;
   // Display & Size
   display: flex;

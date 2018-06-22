@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "00c8284e578cb14a82bd73c82ad2ab25",
+    "content-hash": "3ea8bd4b9e243c0953c44ba64dbfb44d",
     "packages": [
         {
             "name": "deviscoding/base",
-            "version": "1.1.14",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deviscoding/base.git",
-                "reference": "49fa118ac7a4188f8da232910d449d5d8ba5cfa0"
+                "reference": "422e043118fe98cef847f34a0b57c1f65f8c7fff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deviscoding/base/zipball/49fa118ac7a4188f8da232910d449d5d8ba5cfa0",
-                "reference": "49fa118ac7a4188f8da232910d449d5d8ba5cfa0",
+                "url": "https://api.github.com/repos/deviscoding/base/zipball/422e043118fe98cef847f34a0b57c1f65f8c7fff",
+                "reference": "422e043118fe98cef847f34a0b57c1f65f8c7fff",
                 "shasum": ""
             },
             "replace": {
-                "strapless/base": "^1.1"
+                "strapless/base": "^2.0"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -44,7 +44,7 @@
                 "strapless",
                 "variables"
             ],
-            "time": "2018-05-24T12:29:40+00:00"
+            "time": "2018-05-24T12:28:48+00:00"
         },
         {
             "name": "deviscoding/colors",
@@ -86,24 +86,78 @@
             "time": "2018-05-23T15:47:48+00:00"
         },
         {
-            "name": "deviscoding/display",
-            "version": "1.0.4",
+            "name": "deviscoding/device",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/deviscoding/display.git",
-                "reference": "efff0042b09d87e6b019bb6a4a1ead3899242d56"
+                "url": "https://github.com/jonesiscoding/device.git",
+                "reference": "13c906e6307ad68a53c9cfb978f62445297db65c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deviscoding/display/zipball/efff0042b09d87e6b019bb6a4a1ead3899242d56",
-                "reference": "efff0042b09d87e6b019bb6a4a1ead3899242d56",
+                "url": "https://api.github.com/repos/jonesiscoding/device/zipball/13c906e6307ad68a53c9cfb978f62445297db65c",
+                "reference": "13c906e6307ad68a53c9cfb978f62445297db65c",
+                "shasum": ""
+            },
+            "replace": {
+                "exactquery/xq-detect": "^3.0"
+            },
+            "suggest": {
+                "deviscoding/poly-pointer": "Psuedo-Polyfill for (pointer:coarse). Easy support of touch devices."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "XQ\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AMJones",
+                    "homepage": "http://www.deviscoding.com"
+                }
+            ],
+            "description": "Device feature detection via Vanilla JS with a PHP backup for server side detection.",
+            "homepage": "https://github.com/jonesiscoding/device",
+            "keywords": [
+                "browser",
+                "detection",
+                "device",
+                "feature",
+                "hidpi",
+                "javascript",
+                "php",
+                "retina",
+                "touch"
+            ],
+            "time": "2018-05-08T14:13:02+00:00"
+        },
+        {
+            "name": "deviscoding/display",
+            "version": "1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deviscoding/display.git",
+                "reference": "2342ef750baa5dcd36b0cf34173371d13439b8fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deviscoding/display/zipball/2342ef750baa5dcd36b0cf34173371d13439b8fa",
+                "reference": "2342ef750baa5dcd36b0cf34173371d13439b8fa",
                 "shasum": ""
             },
             "require": {
-                "strapless/base": "^1.0"
+                "deviscoding/responsive": "^1.0"
+            },
+            "replace": {
+                "strapless/display": "^1.0"
             },
             "suggest": {
-                "exactquery/d.js": "^2.2"
+                "deviscoding/device": "^3.0"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -117,7 +171,7 @@
                 }
             ],
             "description": "Responsive classes for managing CSS display properties.",
-            "homepage": "https://www.github.com/strapless/display",
+            "homepage": "https://www.github.com/deviscoding/display",
             "keywords": [
                 "css",
                 "display",
@@ -126,24 +180,24 @@
                 "scss",
                 "strapless"
             ],
-            "time": "2017-12-13T13:58:58+00:00"
+            "time": "2018-06-20T14:06:08+00:00"
         },
         {
             "name": "deviscoding/icons",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deviscoding/icons.git",
-                "reference": "6b318ae92078407b62cdf15b21c57b3799b1fc27"
+                "reference": "9a96f5de622131caff4de1e409997c1a3f70865e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deviscoding/icons/zipball/6b318ae92078407b62cdf15b21c57b3799b1fc27",
-                "reference": "6b318ae92078407b62cdf15b21c57b3799b1fc27",
+                "url": "https://api.github.com/repos/deviscoding/icons/zipball/9a96f5de622131caff4de1e409997c1a3f70865e",
+                "reference": "9a96f5de622131caff4de1e409997c1a3f70865e",
                 "shasum": ""
             },
             "require": {
-                "deviscoding/base": "^1.1.5"
+                "deviscoding/base": "^2.0"
             },
             "replace": {
                 "strapless/icons": "^1.0"
@@ -171,26 +225,26 @@
                 "strapless",
                 "svg"
             ],
-            "time": "2018-06-04T13:15:00+00:00"
+            "time": "2018-06-21T13:47:06+00:00"
         },
         {
             "name": "deviscoding/layout",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deviscoding/layout.git",
-                "reference": "4582213024fbb575153e8a00736cf6ac0b1841c0"
+                "reference": "0072df533d07dd1cfe60c2aad86ff26b21446ffd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deviscoding/layout/zipball/4582213024fbb575153e8a00736cf6ac0b1841c0",
-                "reference": "4582213024fbb575153e8a00736cf6ac0b1841c0",
+                "url": "https://api.github.com/repos/deviscoding/layout/zipball/0072df533d07dd1cfe60c2aad86ff26b21446ffd",
+                "reference": "0072df533d07dd1cfe60c2aad86ff26b21446ffd",
                 "shasum": ""
             },
             "require": {
-                "deviscoding/base": "^1.1",
+                "deviscoding/base": "^2.0",
                 "deviscoding/colors": "^1.0",
-                "deviscoding/icons": "^1.0"
+                "deviscoding/icons": "^1.0.3"
             },
             "replace": {
                 "strapless/layout": "^1.0"
@@ -216,7 +270,47 @@
                 "scss",
                 "strapless"
             ],
-            "time": "2018-06-04T13:23:43+00:00"
+            "time": "2018-06-22T13:20:55+00:00"
+        },
+        {
+            "name": "deviscoding/responsive",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deviscoding/responsive.git",
+                "reference": "ec64ef31ac68423474d2201a3f32dea2e4555ef6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deviscoding/responsive/zipball/ec64ef31ac68423474d2201a3f32dea2e4555ef6",
+                "reference": "ec64ef31ac68423474d2201a3f32dea2e4555ef6",
+                "shasum": ""
+            },
+            "require": {
+                "deviscoding/base": "^2.0",
+                "deviscoding/device": "^3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron M Jones",
+                    "homepage": "http://www.jonesiscoding.com"
+                }
+            ],
+            "description": "SASS utilities for responsive web design.",
+            "homepage": "https://www.github.com/deviscoding/responsive",
+            "keywords": [
+                "responsive",
+                "rwd",
+                "sass",
+                "scss",
+                "strapless"
+            ],
+            "time": "2018-06-20T13:09:01+00:00"
         }
     ],
     "packages-dev": [],
