@@ -62,7 +62,7 @@ jQuery.fn.extend( {
 /**
  * jQuery Plugin for managing a navigation drawer.
  *
- * @version v2.0.4
+ * @version v2.1
  * @license https://github.com/deviscoding/drawer/LICENSE
  * @author  Aaron M Jones <am@jonesiscoding.com>
  */
@@ -118,9 +118,6 @@ jQuery.fn.extend( {
           if(drawer.isTemporary()) {
             $html.removeClass('on off persistent permanent').addClass('temporary');
           } else if(drawer.isPersistent()) {
-            if(!$html.hasClass('temporary') && $html.hasClass('touch')) {
-              $html.addClass('off');
-            }
             $html.addClass('persistent').removeClass('on temporary permanent');
           } else {
             $html.addClass('permanent').removeClass('temporary persistent on off');
